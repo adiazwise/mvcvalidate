@@ -1,0 +1,30 @@
+﻿@model MvcExample.Models.Customers
+@{
+    ViewBag.Title = "Index";
+}
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="script/jquery.validate.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("signupform").validate({
+            rules: {
+                name: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: {
+                    required: "Email is required",
+                    email: "Please type a valid email"
+                }
+            }
+        })
+    });
+</script>
+<h2>Index</h2>
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id = "signupform" }))
+{
+    @Html.TextBoxFor(m => m.name)
+    <input type="submit" name="name" value="send " />
+}
